@@ -39,15 +39,15 @@ router.get("/search", async (req,res) => {
     try{
         const page = req.query.page || 1;
         const size = req.query.size || 10;
-        const start = req.query.flight;
-        const end = req.query.flight;
+        const start = req.query.start;
+        const end = req.query.end;
         const flight=await Flight.find({start:start,end:end})
         .skip((page -1)*size)
         .limit(size)
         .lean().exec();
  
         const totalPages = Math.ceil(
-            (await Flight.find({block:block}).countDocuments())/size
+            (await Flight.find({start:start,end:end}).countDocuments())/size
         );
 
         return res.send({flight,totalPages});
