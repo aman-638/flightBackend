@@ -41,7 +41,7 @@ router.get("/search", async (req,res) => {
         const size = req.query.size || 10;
         const start = req.query.flight;
         const end = req.query.flight;
-        const flight=await Flight.find({start:start},{end:end})
+        const flight=await Flight.find({start:start,end:end})
         .skip((page -1)*size)
         .limit(size)
         .lean().exec();
