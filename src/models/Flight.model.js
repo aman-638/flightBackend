@@ -8,7 +8,7 @@ const flightSchema = new mongoose.Schema(
     cost:{type:Number,required:true},
     start_time:{type:String,required:true},
     end_time:{type:String,required:true},
-    capacity:{type:String,required:true}
+    capacity:{type:Number,required:true}
     },
     {
       versionKey:false,

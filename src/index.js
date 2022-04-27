@@ -3,7 +3,7 @@ const express = require("express");
 const connect = require("./config/db");
 const {login, register} = require("./controllers/auth.controller");
 const userController = require("./controllers/user.controller");
-
+const flightController = require("./controllers/Flight.controller");
 const cors = require("cors");
 
 const app = express();
@@ -19,7 +19,7 @@ app.use(express.json());
 app.use("/users", userController);
 
 //flight controller
-
+app.use("/flight",flightController);
 
 //login and register controller
 app.post("/login", login)
